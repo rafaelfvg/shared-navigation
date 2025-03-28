@@ -16,6 +16,8 @@ const SidebarMenu = ({ items, userPermissions }) => {
     return permissions.some((permission) => userPermissions.includes(permission));
   };
 
+  if(!items) return;
+
   return (
     <aside className="sidebar">
       <ul className="sidebar-list">

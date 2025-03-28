@@ -16,10 +16,46 @@ npm install shared-navigation-rafaelfvg
 
 ``` jsx
 import SidebarMenu from 'shared-navigation-rafaelfvg'; 
-import { MENU_ITEMS } from './menuItems'; 
+
+const MENU_ITEMS = [
+  {
+    name: "Dashboard",
+    href: "/dashboard",
+    permissions: ['admin', 'user'],
+    submenu: [
+      {
+        permissions: ['admin'],
+        name: "Product List",
+        href: "/products-list",
+      }
+    ],    
+  },
+  {
+    name: "About",
+    href: "/about",
+    permissions: ['admin', 'user'],
+  },
+  {
+    name: "Comments",
+    href: "/comments",
+    permissions: ['user'],    
+  },  
+  {
+    name: "Commissions",
+    href: "/commissions",
+    permissions: ['admin', 'user'],
+    submenu: [
+      {
+        name: "Commissions List",
+        href: "/commissions-list",
+        permissions: ['COMMISSION_READ'],
+      }
+    ],
+  }
+]
 
 function App() {
-  const userPermissions = ['admin', 'user', 'COMMISSION_READ'];
+  const userPermissions = ['admin'];
 
   return (
     <div style={{ display: 'flex' }}>
@@ -28,6 +64,8 @@ function App() {
     </div>
   );
 }
+
+// visible items: dashboard, product list, about, commissions root
 
 export default App;
 ```

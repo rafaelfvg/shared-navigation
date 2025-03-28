@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 
+// Intentar importar Next.js Link si está disponible
 let NextLink;
 try {
   NextLink = require('next/link').default;
@@ -30,7 +31,7 @@ const SidebarMenu = ({ items, userPermissions }) => {
       <ul className="sidebar-list">
         {items.map((item) => {
           if (!hasPermission(item.permissions)) {
-            return null; 
+            return null;
           }
 
           if (item.submenu) {
@@ -55,7 +56,7 @@ const SidebarMenu = ({ items, userPermissions }) => {
                       return (
                         <li key={subitem.name} className="submenu-item">
                           {NextLink ? (
-                            <NextLink href={subitem.href}>
+                            <NextLink href={subitem.href}>                              
                               <a>{subitem.name}</a>
                             </NextLink>
                           ) : (
@@ -71,9 +72,9 @@ const SidebarMenu = ({ items, userPermissions }) => {
           }
 
           return (
-            <li key={item.name} className="sidebar-item">
+            <li key={item.name} className="sidebar-item">              
               {NextLink ? (
-                <NextLink href={item.href}>
+                <NextLink href={item.href}>                 
                   <a>{item.name}</a>
                 </NextLink>
               ) : (

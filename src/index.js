@@ -1,15 +1,9 @@
-"use client";
-
 import React, { useState } from 'react';
+import dynamic from "next/dynamic";
 import PropTypes from 'prop-types';
 import './index.css';
 
-let NextLink;
-try {
-  NextLink = require("next/link").default;
-} catch (error) {
-  NextLink = null; 
-}
+const NextLink = dynamic(() => import("next/link"), { ssr: false });
 
 const SidebarMenu = ({ items, userPermissions }) => {
   const [openSubmenus, setOpenSubmenus] = useState({});

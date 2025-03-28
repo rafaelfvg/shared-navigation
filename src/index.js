@@ -1,13 +1,14 @@
+"use client";
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 
-// Intentar importar Next.js Link si está disponible
 let NextLink;
 try {
-  NextLink = require('next/link').default;
+  NextLink = require("next/link").default;
 } catch (error) {
-  NextLink = null;
+  NextLink = null; 
 }
 
 const SidebarMenu = ({ items, userPermissions }) => {
@@ -34,17 +35,14 @@ const SidebarMenu = ({ items, userPermissions }) => {
             return null;
           }
 
+          const LinkComponent = NextLink ? NextLink : "a";
+
           if (item.submenu) {
             return (
               <li key={item.name} className="sidebar-item">
-                <div
-                  className="submenu-title"
-                  onClick={() => toggleSubmenu(item.name)}
-                >
+                <div className="submenu-title" onClick={() => toggleSubmenu(item.name)}>
                   {item.name}
-                  <span className="arrow">
-                    {openSubmenus[item.name] ? '▲' : '▼'}
-                  </span>
+                  <span className="arrow">{openSubmenus[item.name] ? "▲" : "▼"}</span>
                 </div>
                 {openSubmenus[item.name] && (
                   <ul className="submenu-list">
@@ -52,16 +50,9 @@ const SidebarMenu = ({ items, userPermissions }) => {
                       if (!hasPermission(subitem.permissions)) {
                         return null;
                       }
-
                       return (
                         <li key={subitem.name} className="submenu-item">
-                          {NextLink ? (
-                            <NextLink href={subitem.href}>                              
-                              <a>{subitem.name}</a>
-                            </NextLink>
-                          ) : (
-                            <a href={subitem.href}>{subitem.name}</a>
-                          )}
+                          <LinkComponent href={subitem.href}>{subitem.name}</LinkComponent>
                         </li>
                       );
                     })}
@@ -72,14 +63,8 @@ const SidebarMenu = ({ items, userPermissions }) => {
           }
 
           return (
-            <li key={item.name} className="sidebar-item">              
-              {NextLink ? (
-                <NextLink href={item.href}>                 
-                  <a>{item.name}</a>
-                </NextLink>
-              ) : (
-                <a href={item.href}>{item.name}</a>
-              )}
+            <li key={item.name} className="sidebar-item">
+              <LinkComponent href={item.href}>{item.name}</LinkComponent>
             </li>
           );
         })}

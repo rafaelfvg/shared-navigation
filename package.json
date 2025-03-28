@@ -1,6 +1,6 @@
 {
   "name": "shared-navigation-rafaelfvg",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Shared navigation for Next.js backoffice",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",

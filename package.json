@@ -1,10 +1,10 @@
 {
   "name": "shared-navigation-rafaelfvg",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Shared navigation for Next.js backoffice",
-  "main": "components/Navigation.js",
+  "main": "./build/index.js",
   "scripts": {
-     "build": "babel components/Navigation.js -d dist"
+    "build": "webpack"
   },
   "peerDependencies": {
     "next": ">=13.0.0",
@@ -23,8 +23,16 @@
   "homepage": "https://github.com/rafaelfvg/shared-navigation#readme",
   "dependencies": {
     "@babel/cli": "^7.27.0",
+    "prop-types": "^15.8.1"
+  },
+  "devDependencies": {
     "@babel/core": "^7.26.10",
     "@babel/preset-env": "^7.26.9",
-    "@babel/preset-react": "^7.26.3"
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
   }
 }
